@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bakery Website Project #2</title>
+    <title>Bakery website project #2</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -21,7 +21,11 @@
                             600: '#c2185b',
                             700: '#880e4f',
                         },
-                        roseacc: '#d81b60'
+                        roseacc: '#d81b60',
+                        slateacc: '#0f172a',
+                        navybg: '#070b19',
+                        maroonacc: '#800f22',
+                        maroondark: '#420610'
                     },
                     fontFamily: {
                         serif: ['Playfair Display', 'Georgia', 'serif'],
@@ -35,23 +39,22 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     
     <style>
         body {
             font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
             background: linear-gradient(180deg, #fff7f9 0%, #ffeef3 40%, #ffdce8 80%, #ffffff 100%);
             color: #2c1a24;
-            overflow-x: hidden;
         }
 
         h1, h2, h3, .font-serif {
             font-family: 'Playfair Display', Georgia, serif;
         }
 
-        /* Glassmorphism Cards */
+        /* Glassmorphism Cards for Main Site */
         .glass-card {
-            background: rgba(255, 255, 255, 0.75);
+            background: rgba(255, 255, 255, 0.78);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.9);
@@ -64,7 +67,7 @@
         .glass-card-hover:hover {
             transform: translateY(-3px);
             box-shadow: 0 16px 36px -4px rgba(224, 61, 115, 0.12);
-            background: rgba(255, 255, 255, 0.92);
+            background: rgba(255, 255, 255, 0.94);
         }
 
         /* Canvas */
@@ -205,13 +208,203 @@
             border-style: solid;
             border-color: rgba(255, 238, 243, 0.95) transparent transparent transparent;
         }
+
+        /* FAKE INTRO DARK BLUE & MAROON CARDS */
+        .intro-tech-card {
+            background: rgba(18, 11, 28, 0.82);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(128, 15, 34, 0.45);
+            transition: all 0.4s ease;
+        }
+        .intro-tech-card:hover {
+            border-color: rgba(224, 61, 115, 0.7);
+            box-shadow: 0 10px 30px -6px rgba(128, 15, 34, 0.5);
+            background: rgba(28, 14, 38, 0.9);
+        }
+
+        /* Transition FX for intro to main reveal */
+        .intro-dissolve {
+            transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1), transform 1.1s cubic-bezier(0.16, 1, 0.3, 1), filter 1.1s ease;
+        }
     </style>
 </head>
-<body class="relative min-h-screen text-slate-800 selection:bg-blush-200 selection:text-blush-700 pb-20">
+<body class="relative min-h-screen text-slate-800 selection:bg-blush-200 selection:text-blush-700 pb-20 overflow-hidden" id="bodyElement">
 
     <!-- Progress Bar -->
     <div class="fixed top-0 left-0 w-full h-[2px] z-50 bg-blush-100/30">
         <div id="progressBar" class="h-full bg-gradient-to-r from-blush-300 via-blush-400 to-roseacc w-0 transition-all duration-150"></div>
+    </div>
+
+    <!-- FAKE NEUTRAL INTRO EXPERIENTIAL LAYER (DARK BLUE & DARK MAROON THEME) -->
+    <div id="fakeIntroWrapper" class="fixed inset-0 z-50 overflow-y-auto bg-[#070b19] text-slate-100 intro-dissolve border-b border-[#800f22]/40 shadow-2xl">
+        
+        <!-- Dark Maroon Ambient Background Glows -->
+        <div id="introBgGlow1" class="absolute -top-32 -left-32 w-96 h-96 bg-[#800f22]/25 rounded-full blur-3xl pointer-events-none transition-all duration-1000"></div>
+        <div id="introBgGlow2" class="absolute top-1/2 -right-32 w-96 h-96 bg-[#420610]/40 rounded-full blur-3xl pointer-events-none transition-all duration-1000"></div>
+        <div id="introBgGlow3" class="absolute bottom-10 left-1/3 w-80 h-80 bg-blue-900/20 rounded-full blur-3xl pointer-events-none transition-all duration-1000"></div>
+
+        <!-- Intro Header / Navbar -->
+        <header class="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between border-b border-[#800f22]/30 relative z-10">
+            <div class="flex items-center gap-3">
+                <div id="introLogoBadge" class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#800f22] to-rose-900 flex items-center justify-center font-mono font-bold text-xs text-white shadow-md shadow-[#800f22]/30 transition-all duration-700">
+                    NX
+                </div>
+                <div>
+                    <span class="font-mono text-xs tracking-widest text-slate-200 uppercase block font-semibold">NEXUS STUDIO</span>
+                    <span class="text-[10px] text-slate-400 font-mono">v7.0.4 • System Active</span>
+                </div>
+            </div>
+
+            <div class="hidden sm:flex items-center gap-6 text-xs text-slate-400 font-mono">
+                <span class="hover:text-slate-200 transition cursor-pointer">Architecture</span>
+                <span class="hover:text-slate-200 transition cursor-pointer">Analytics</span>
+                <span class="hover:text-slate-200 transition cursor-pointer">Diagnostics</span>
+                <span id="introStatusTag" class="px-2.5 py-1 rounded-full bg-[#130b1e] border border-[#800f22]/50 text-rose-300 text-[10px] flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse"></span>
+                    Operational
+                </span>
+            </div>
+        </header>
+
+        <!-- Intro Section 1: Neutral Hero with Pink Disclaimer -->
+        <section class="max-w-4xl mx-auto px-6 pt-16 pb-16 text-center relative z-10">
+            
+            <!-- PINK DISCLAIMER BADGE -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-pink-500/15 border border-pink-400/40 text-pink-300 text-xs font-mono font-medium mb-6 shadow-md shadow-pink-500/10 animate-pulse">
+                <span>✨</span>
+                <span>DISCLAIMER: This is not what you think 💕</span>
+            </div>
+
+            <div class="block">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#12081c] border border-[#800f22]/40 text-xs font-mono text-slate-400 mb-8">
+                    <span id="introSparkleTag" class="text-rose-400">⚡</span>
+                    <span>Interactive Design & System Verification Engine</span>
+                </div>
+            </div>
+
+            <h1 id="introHeroTitle" class="text-3xl sm:text-5xl md:text-6xl font-bold font-sans text-slate-100 tracking-tight leading-tight mb-6 transition-all duration-700">
+                Engineering High-Performance Interactive Systems
+            </h1>
+
+            <p class="text-slate-300 text-sm sm:text-base font-light max-w-xl mx-auto leading-relaxed mb-10">
+                Explore modular UI prototypes, real-time diagnostic algorithms, and user interaction analytics in a clean digital environment.
+            </p>
+
+            <div class="flex flex-wrap items-center justify-center gap-4">
+                <button onclick="runDiagnosticTest()" class="px-6 py-3 rounded-xl bg-gradient-to-r from-[#800f22] to-rose-900 hover:from-rose-800 hover:to-[#800f22] text-white text-xs font-semibold tracking-wider uppercase transition shadow-lg shadow-[#800f22]/30 flex items-center gap-2 active:scale-95 border border-rose-500/30">
+                    <span>Run Diagnostic Test</span>
+                    <span class="text-rose-200 font-mono">→</span>
+                </button>
+
+                <button onclick="smoothScrollTo('introSection2')" class="px-6 py-3 rounded-xl bg-[#0e0717] hover:bg-[#1a0c28] text-slate-300 border border-[#800f22]/40 text-xs font-mono transition flex items-center gap-2">
+                    <span>Explore Modules</span>
+                    <span class="text-xs">↓</span>
+                </button>
+            </div>
+
+            <!-- Toast Output for Diagnostic Test -->
+            <div id="introDiagnosticToast" class="hidden mt-6 p-3 max-w-xs mx-auto rounded-lg bg-[#14081c] border border-rose-500/40 text-xs font-mono text-pink-300 transition-all duration-300 shadow-lg">
+                🔍 Diagnostic running... 1 unique priority user profile detected.
+            </div>
+        </section>
+
+        <!-- Intro Section 2: Core Metrics & Diagnostics -->
+        <section id="introSection2" class="max-w-5xl mx-auto px-6 py-16 relative z-10">
+            <div class="text-center mb-12">
+                <span class="text-[10px] font-mono uppercase tracking-widest text-slate-400">System Metrics</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-100 mt-1">Live Module Analytics</h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="intro-tech-card p-6 rounded-2xl">
+                    <div class="text-xs font-mono text-slate-400 mb-2">METRIC_01 // RUNTIME</div>
+                    <div class="text-3xl font-bold font-mono text-slate-100 mb-1">7 Years</div>
+                    <p class="text-xs text-slate-400 font-light leading-relaxed">
+                        Continuous background processing since Grade 3 initialization.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div id="introCard2" class="intro-tech-card p-6 rounded-2xl transition-all duration-700">
+                    <div class="text-xs font-mono text-slate-400 mb-2">METRIC_02 // MEMORY CACHE</div>
+                    <div id="introMemoryStat" class="text-3xl font-bold font-mono text-slate-100 mb-1">50 Records</div>
+                    <p class="text-xs text-slate-400 font-light leading-relaxed mb-4">
+                        Stored impressions, smiles, and shared core memories.
+                    </p>
+                    <button onclick="analyzeMemoryCache()" class="w-full py-2 rounded-lg bg-[#0c0514] border border-[#800f22]/60 hover:border-pink-500/60 text-[11px] font-mono text-slate-200 transition">
+                        Analyze Cache 🔍
+                    </button>
+                    <div id="memoryCacheFeedback" class="hidden mt-3 text-[11px] font-mono text-pink-300 italic">
+                        ✦ Found 1 primary memory: "The Valentine's Day Hug"
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="intro-tech-card p-6 rounded-2xl">
+                    <div class="text-xs font-mono text-slate-400 mb-2">METRIC_03 // ALIGNMENT</div>
+                    <div class="text-3xl font-bold font-mono text-slate-100 mb-1">100%</div>
+                    <p class="text-xs text-slate-400 font-light leading-relaxed">
+                        Unwavering connection across past, present, and future states.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Intro Section 3: Interactive Visual Spectrum Tester -->
+        <section class="max-w-4xl mx-auto px-6 py-16 text-center relative z-10">
+            <div class="intro-tech-card p-8 rounded-3xl relative overflow-hidden shadow-xl">
+                <span class="text-[10px] font-mono uppercase tracking-widest text-slate-400 block mb-2">Interactive Sandbox</span>
+                <h3 class="text-xl font-bold text-slate-200 mb-4">Color Spectrum & Mood Modulator</h3>
+                <p class="text-xs text-slate-400 font-light max-w-md mx-auto mb-6">
+                    Test how visual frequency shifts impact design perception. Click a palette below to adjust global theme parameters.
+                </p>
+
+                <!-- Color Shift Buttons -->
+                <div class="flex flex-wrap items-center justify-center gap-3">
+                    <button onclick="setIntroTheme('maroon')" class="px-4 py-2 rounded-xl bg-[#0c0514] border border-[#800f22] text-rose-300 text-xs font-mono hover:bg-[#800f22]/30 transition">
+                        Dark Maroon Matrix (Default)
+                    </button>
+                    <button onclick="setIntroTheme('amber')" class="px-4 py-2 rounded-xl bg-[#0c0514] border border-amber-500/40 text-amber-300 text-xs font-mono hover:bg-amber-950/40 transition">
+                        Warm Accent
+                    </button>
+                    <button onclick="setIntroTheme('blush')" class="px-4 py-2 rounded-xl bg-[#0c0514] border border-pink-500/50 text-pink-300 text-xs font-mono hover:bg-pink-950/40 transition flex items-center gap-1.5 shadow-md">
+                        <span>Blush Shift</span>
+                        <span class="text-xs">🌸</span>
+                    </button>
+                </div>
+
+                <div id="themeFeedbackText" class="mt-6 text-xs font-mono text-slate-400 h-6">
+                    Current Theme: Dark Navy & Deep Maroon Spectrum
+                </div>
+            </div>
+        </section>
+
+        <!-- Intro Section 4: System Logs & Transition Terminal -->
+        <section class="max-w-4xl mx-auto px-6 pt-10 pb-28 text-center relative z-10">
+            <div id="introTerminalCard" class="intro-tech-card p-8 sm:p-12 rounded-3xl relative overflow-hidden transition-all duration-1000 border-2 border-[#800f22]">
+                <div class="flex items-center justify-center gap-2 mb-4">
+                    <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
+                    <span class="text-xs font-mono text-pink-400 uppercase tracking-widest font-semibold">Priority Decryption Ready</span>
+                </div>
+
+                <h2 id="introTerminalHeading" class="text-2xl sm:text-4xl font-bold font-sans text-slate-100 mb-4 transition-all duration-700">
+                    System Diagnostic Complete. 1 Secret Record Found.
+                </h2>
+
+                <p id="introTerminalDesc" class="text-xs sm:text-sm text-slate-300 font-light max-w-lg mx-auto leading-relaxed mb-8 transition-all duration-700">
+                    The system has detected that this website was built specifically for one person. Click below to bypass the demo shell and unlock the true experience.
+                </p>
+
+                <!-- Final Big Reveal Button -->
+                <div class="pt-2">
+                    <button onclick="startMainWebsiteReveal()" class="px-10 py-4 rounded-full bg-gradient-to-r from-[#800f22] via-rose-600 to-blush-500 text-white font-medium text-sm tracking-wider uppercase shadow-2xl hover:scale-105 active:scale-95 transition-all duration-500 flex items-center justify-center gap-3 mx-auto border border-pink-300/40 glow-btn">
+                        <span>Ok, lemme stop playin</span>
+                        <span class="text-base">💕</span>
+                    </button>
+                </div>
+            </div>
+        </section>
     </div>
 
     <!-- Pinned Quote Banner at Bottom -->
@@ -272,481 +465,485 @@
         </div>
     </div>
 
-    <!-- LANDING SECTION -->
-    <section id="hero" class="relative min-h-screen flex flex-col items-center justify-center px-4 text-center overflow-hidden">
-        
-        <!-- Subtle Parallax Background Glows -->
-        <div class="absolute inset-0 pointer-events-none">
-            <div class="absolute top-1/3 left-1/4 w-96 h-96 bg-blush-200/25 rounded-full blur-3xl"></div>
-            <div class="absolute bottom-1/3 right-1/4 w-80 h-80 bg-blush-100/40 rounded-full blur-3xl"></div>
-        </div>
+    <!-- MAIN ROMANTIC WEBSITE CONTENT (REVEALED AFTER CLICKING BUTTON) -->
+    <main id="mainWebsiteContent" class="relative">
 
-        <!-- Hidden Discovery Item 1 -->
-        <div class="absolute top-28 right-16">
-            <span class="discovery-symbol text-blush-600 text-sm font-medium" onclick="showSecret('gng you cant say no btw')">✦</span>
-        </div>
-
-        <div class="max-w-3xl z-10 space-y-8 reveal active">
-            <span class="inline-block px-4 py-1.5 rounded-full text-[11px] font-medium tracking-widest uppercase bg-white/80 text-blush-600 border border-blush-200/60 shadow-sm">
-                A Letter For You
-            </span>
+        <!-- LANDING SECTION -->
+        <section id="hero" class="relative min-h-screen flex flex-col items-center justify-center px-4 text-center overflow-hidden pt-12">
             
-            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-serif text-slate-900 tracking-tight leading-[1.15]">
-                «You know you miss me.»
-            </h1>
-            
-            <p class="text-base sm:text-lg text-slate-600 font-light max-w-lg mx-auto leading-relaxed">
-                you can try to be nonchalant abt it but you know where home is 🥺🙏
-            </p>
-            
-            <div class="pt-6">
-                <button onclick="smoothScrollTo('section2', true)" class="glow-btn px-9 py-4 rounded-full bg-slate-900 text-white font-light text-base tracking-wide shadow-xl hover:bg-blush-600 hover:scale-105 active:scale-95 transition-all duration-500 flex items-center justify-center gap-3 mx-auto group">
-                    <span>Fine... I'll read it.</span>
-                    <span class="text-xs group-hover:translate-y-0.5 transition-transform">↓</span>
-                </button>
-            </div>
-        </div>
-
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 opacity-30 animate-pulse">
-            <div class="w-4 h-7 border border-slate-400 rounded-full flex justify-center p-1">
-                <div class="w-1 h-1.5 bg-slate-600 rounded-full"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 2: TYPEWRITER LETTER -->
-    <section id="section2" class="py-28 px-4 min-h-screen flex flex-col justify-center relative">
-        
-        <!-- Hidden Discovery Item 2 -->
-        <div class="absolute top-16 left-10">
-            <span class="discovery-symbol text-blush-600 text-sm font-medium" onclick="showSecret('ts took me like 2 months to build btw')">✧</span>
-        </div>
-
-        <div class="max-w-2xl mx-auto w-full">
-            <div class="glass-card rounded-3xl p-8 md:p-14 relative shadow-2xl border border-white/80">
-                <div class="text-[11px] uppercase tracking-widest text-blush-600 font-semibold mb-8 flex items-center gap-2">
-                    <span class="w-1.5 h-1.5 rounded-full bg-blush-500"></span>
-                    Dear Son,
-                </div>
-
-                <div id="typewriterContainer" class="font-sans text-base md:text-lg leading-relaxed text-slate-700 min-h-[320px] whitespace-pre-line font-light"></div>
-
-                <div id="typewriterComplete" class="hidden mt-10 pt-8 border-t border-blush-200/50 flex flex-col items-center gap-3 text-center transition-opacity duration-700">
-                    <p class="text-xs font-medium tracking-widest uppercase text-blush-600">Keep scrolling</p>
-                    <span class="text-slate-400 text-xs">↓</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 3: OUR STORY TIMELINE -->
-    <section id="section3" class="py-28 px-4 relative">
-        <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-20 reveal">
-                <h2 class="text-3xl md:text-5xl font-serif text-slate-900 mb-3">Our Story</h2>
-                <p class="text-xs tracking-widest uppercase text-slate-400 font-light">Seven years of moments • Tap items to unfold ✨💕</p>
+            <!-- Subtle Parallax Background Glows -->
+            <div class="absolute inset-0 pointer-events-none">
+                <div class="absolute top-1/3 left-1/4 w-96 h-96 bg-blush-200/25 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-1/3 right-1/4 w-80 h-80 bg-blush-100/40 rounded-full blur-3xl"></div>
             </div>
 
-            <!-- Vertical Timeline -->
-            <div class="relative timeline-line space-y-12 md:space-y-16">
+            <!-- Hidden Discovery Item 1 -->
+            <div class="absolute top-28 right-16">
+                <span class="discovery-symbol text-blush-600 text-sm font-medium" onclick="showSecret('gng you cant say no btw')">✦</span>
+            </div>
+
+            <div class="max-w-3xl z-10 space-y-8 reveal active">
+                <span class="inline-block px-4 py-1.5 rounded-full text-[11px] font-medium tracking-widest uppercase bg-white/80 text-blush-600 border border-blush-200/60 shadow-sm">
+                    A Letter For You
+                </span>
                 
-                <!-- Event 1 -->
-                <div class="relative flex flex-col md:flex-row items-center reveal">
-                    <div class="flex items-center justify-center w-8 h-8 rounded-full bg-white border border-blush-300 text-blush-600 shadow-sm z-10 mb-4 md:mb-0 md:absolute md:left-1/2 md:-translate-x-1/2 text-xs">
-                        📍
-                    </div>
-                    <div class="w-full md:w-1/2 md:pr-12 md:text-right">
-                        <div onclick="toggleTimelineDetail(1)" class="glass-card p-6 rounded-2xl glass-card-hover shimmer-card cursor-pointer group">
-                            <span class="text-[10px] font-bold uppercase tracking-widest text-blush-500">Grade 3 • AOG</span>
-                            <h3 class="text-xl font-serif text-slate-800 font-semibold my-1">We met.</h3>
-                            <p class="text-slate-600 text-sm leading-relaxed font-light">
-                                You probably had absolutely no idea that one awkward boy had already noticed you.
-                            </p>
-                            <div id="timelineDetail1" class="hidden mt-3 pt-3 border-t border-blush-100 text-xs text-blush-700 italic font-light">
-                                Funny how life works. Some people catch your attention before you even understand why.
-                            </div>
-                            <div class="text-[10px] text-slate-400 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                🔍 Tap to reveal reflection
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Event 2 -->
-                <div class="relative flex flex-col md:flex-row items-center reveal">
-                    <div class="flex items-center justify-center w-8 h-8 rounded-full bg-white border border-blush-300 text-blush-600 shadow-sm z-10 mb-4 md:mb-0 md:absolute md:left-1/2 md:-translate-x-1/2 text-xs">
-                        📍
-                    </div>
-                    <div class="w-full md:w-1/2 md:pl-12 md:ml-auto">
-                        <div onclick="toggleTimelineDetail(2)" class="glass-card p-6 rounded-2xl glass-card-hover shimmer-card cursor-pointer group">
-                            <span class="text-[10px] font-bold uppercase tracking-widest text-blush-500">A Quiet Beginning</span>
-                            <h3 class="text-xl font-serif text-slate-800 font-semibold my-1">Grade 7.</h3>
-                            <p class="text-slate-600 text-sm leading-relaxed font-light">
-                                We somehow ended up together. I still smile when I think about it.
-                            </p>
-                            <div id="timelineDetail2" class="hidden mt-3 pt-3 border-t border-blush-100 text-xs text-blush-700 italic font-light">
-                                Two kids who barely understood love, but js knew they enjoyed being around each other.
-                            </div>
-                            <div class="text-[10px] text-slate-400 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                🔍 Tap to reveal reflection
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Event 3 -->
-                <div class="relative flex flex-col md:flex-row items-center reveal">
-                    <div class="flex items-center justify-center w-8 h-8 rounded-full bg-white border border-blush-300 text-blush-600 shadow-sm z-10 mb-4 md:mb-0 md:absolute md:left-1/2 md:-translate-x-1/2 text-xs">
-                        📍
-                    </div>
-                    <div class="w-full md:w-1/2 md:pr-12 md:text-right">
-                        <div onclick="toggleTimelineDetail(3)" class="glass-card p-6 rounded-2xl glass-card-hover shimmer-card cursor-pointer group">
-                            <span class="text-[10px] font-bold uppercase tracking-widest text-blush-500">Unforgettable</span>
-                            <h3 class="text-xl font-serif text-slate-800 font-semibold my-1">Valentine's Dance.</h3>
-                            <p class="text-slate-600 text-sm leading-relaxed font-light">
-                                That hug. I don't think I've ever forgotten it. It sounds dramatic... but it genuinely felt different.
-                            </p>
-                            <div id="timelineDetail3" class="hidden mt-3 pt-3 border-t border-blush-100 text-xs text-blush-700 italic font-light">
-                                Like time slowed down for js a moment in the middle of a noisy room.
-                            </div>
-                            <div class="text-[10px] text-slate-400 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                🔍 Tap to reveal reflection
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Event 4 -->
-                <div class="relative flex flex-col md:flex-row items-center reveal">
-                    <div class="flex items-center justify-center w-8 h-8 rounded-full bg-white border border-roseacc text-roseacc shadow-sm z-10 mb-4 md:mb-0 md:absolute md:left-1/2 md:-translate-x-1/2 text-xs">
-                        📍
-                    </div>
-                    <div class="w-full md:w-1/2 md:pl-12 md:ml-auto">
-                        <div onclick="toggleTimelineDetail(4)" class="glass-card p-6 rounded-2xl glass-card-hover shimmer-card cursor-pointer group">
-                            <span class="text-[10px] font-bold uppercase tracking-widest text-roseacc">Growing Apart</span>
-                            <h3 class="text-xl font-serif text-slate-800 font-semibold my-1">November 30.</h3>
-                            <p class="text-slate-600 text-sm leading-relaxed font-light">
-                                Our relationship ended. Not because you weren't enough. Because I still had growing up to do.
-                            </p>
-                            <div id="timelineDetail4" class="hidden mt-3 pt-3 border-t border-blush-100 text-xs text-blush-700 italic font-light">
-                                Sometimes you have to step away from something special to learn how to properly care for it.
-                            </div>
-                            <div class="text-[10px] text-slate-400 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                🔍 Tap to reveal reflection
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Event 5 -->
-                <div class="relative flex flex-col md:flex-row items-center reveal">
-                    <div class="flex items-center justify-center w-8 h-8 rounded-full bg-slate-900 text-white shadow-md z-10 mb-4 md:mb-0 md:absolute md:left-1/2 md:-translate-x-1/2 text-xs">
-                        📍
-                    </div>
-                    <div class="w-full md:w-1/2 md:pr-12 md:text-right">
-                        <div onclick="toggleTimelineDetail(5)" class="glass-card p-6 rounded-2xl border border-blush-300 glass-card-hover shimmer-card cursor-pointer group">
-                            <span class="text-[10px] font-bold uppercase tracking-widest text-blush-600">Present Day</span>
-                            <h3 class="text-xl font-serif text-slate-800 font-semibold my-1">Today.</h3>
-                            <p class="text-slate-600 text-sm leading-relaxed font-light">
-                                Seven years later. I'm not here pretending I've become perfect. I'm here because I've grown.
-                            </p>
-                            <div id="timelineDetail5" class="hidden mt-3 pt-3 border-t border-blush-100 text-xs text-blush-700 italic font-light">
-                                And because after all this time, some feelings never really left 🥺💕
-                            </div>
-                            <div class="text-[10px] text-slate-400 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                🔍 Tap to reveal reflection
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 4: THINGS I'LL ALWAYS REMEMBER -->
-    <section id="section4" class="py-28 px-4 bg-gradient-to-b from-transparent via-blush-100/30 to-transparent relative">
-        
-        <!-- Hidden Discovery Item 3 -->
-        <div class="absolute top-12 right-12">
-            <span class="discovery-symbol text-blush-600 text-sm font-medium" onclick="showSecret('we keeping it lowk this time right?')">◦</span>
-        </div>
-
-        <div class="max-w-5xl mx-auto">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl md:text-5xl font-serif text-slate-900 mb-3">Things I'll Always Remember About You</h2>
-                <p class="text-slate-500 font-light text-xs md:text-sm">Little details preserved through time</p>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-                <div class="glass-card p-6 rounded-2xl reveal glass-card-hover shimmer-card">
-                    <span class="font-light text-slate-800 text-sm md:text-base">Your glasses.</span>
-                </div>
-                <div class="glass-card p-6 rounded-2xl reveal glass-card-hover shimmer-card" style="transition-delay: 80ms;">
-                    <span class="font-light text-slate-800 text-sm md:text-base">Your eyes.</span>
-                </div>
-                <div class="glass-card p-6 rounded-2xl reveal glass-card-hover shimmer-card" style="transition-delay: 120ms;">
-                    <span class="font-light text-slate-800 text-sm md:text-base">Your hair.</span>
-                </div>
-                <div class="glass-card p-6 rounded-2xl reveal glass-card-hover shimmer-card" style="transition-delay: 160ms;">
-                    <span class="font-light text-slate-800 text-sm md:text-base">How ridiculously smart you are.</span>
-                </div>
-                <div class="glass-card p-6 rounded-2xl reveal glass-card-hover shimmer-card" style="transition-delay: 200ms;">
-                    <span class="font-light text-slate-800 text-sm md:text-base">How mature you've always been.</span>
-                </div>
-                <div class="glass-card p-6 rounded-2xl reveal glass-card-hover shimmer-card" style="transition-delay: 240ms;">
-                    <span class="font-light text-slate-800 text-sm md:text-base">Pink somehow becoming your entire personality.</span>
-                </div>
-                <div class="glass-card p-6 rounded-2xl reveal glass-card-hover shimmer-card" style="transition-delay: 280ms;">
-                    <span class="font-light text-slate-800 text-sm md:text-base">Coke always being your favourite.</span>
-                </div>
-                <div class="glass-card p-6 rounded-2xl reveal glass-card-hover shimmer-card" style="transition-delay: 320ms;">
-                    <span class="font-light text-slate-800 text-sm md:text-base">The way you'd randomly tickle my ribs <span class="text-xs text-blush-700 italic block mt-1">(gone are those days, but its still core memories for me)</span></span>
-                </div>
-                <div class="glass-card p-6 rounded-2xl reveal glass-card-hover shimmer-card" style="transition-delay: 360ms;">
-                    <span class="font-light text-slate-800 text-sm md:text-base">The Valentine's hug.</span>
-                </div>
-                <div class="glass-card p-6 rounded-2xl reveal glass-card-hover shimmer-card sm:col-span-2 lg:col-span-3" style="transition-delay: 400ms;">
-                    <span class="font-light text-slate-800 text-sm md:text-base">The way you made ordinary moments feel important.</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 5: WHAT I LEARNED -->
-    <section id="section5" class="py-28 px-4 relative">
-        
-        <!-- Hidden Discovery Item 4 -->
-        <div class="absolute bottom-10 left-12">
-            <span class="discovery-symbol text-blush-600 text-sm font-medium" onclick="showSecret('I miss hugging you lowk')">✦</span>
-        </div>
-
-        <div class="max-w-3xl mx-auto reveal">
-            <div class="glass-card rounded-3xl p-8 md:p-14 relative shadow-2xl border border-white/90 overflow-hidden">
-                <div class="absolute -right-12 -bottom-12 w-56 h-56 bg-blush-200/30 rounded-full blur-3xl pointer-events-none"></div>
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-serif text-slate-900 tracking-tight leading-[1.15]">
+                    «You know you miss me.»
+                </h1>
                 
-                <h2 class="text-3xl md:text-4xl font-serif text-slate-900 mb-8 text-center">What I Learned</h2>
+                <p class="text-base sm:text-lg text-slate-600 font-light max-w-lg mx-auto leading-relaxed">
+                    No better time than the present??
+                </p>
                 
-                <div class="space-y-6 text-slate-700 font-light text-base md:text-lg leading-relaxed text-center">
-                    <p>I spent a long time thinking about us.</p>
-                    <p class="font-normal text-slate-800">
-                        I realised that love isn't js about liking someone.<br>
-                        It's listening. Understanding. Communicating. Being present.
-                    </p>
-                    <p>
-                        Back then I was shy <span class="text-slate-500 text-sm">(though I'm still a bit shy but I'm working on it 🥺🙏)</span>. Sometimes I took little things too personally.<br>
-                        Sometimes I stayed quiet instead of talking.
-                    </p>
-                    <p class="italic text-blush-600 font-serif">
-                        Looking back, I understand why that wasn't fair.
-                    </p>
-                    <p>
-                        If I could go back, I wouldn't change meeting you.<br>
-                        I'd change the way I handled those moments.
-                    </p>
-                    <div class="pt-6 font-normal text-slate-900 text-base md:text-xl border-t border-blush-100">
-                        I can't change the past.<br>
-                        <span class="text-blush-600 font-serif font-semibold">But I can promise I've learned from it.</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 6: 50 REASONS I LIKE YOU -->
-    <section id="section6" class="py-28 px-4 bg-gradient-to-b from-transparent via-blush-50/50 to-transparent relative">
-        
-        <!-- Hidden Discovery Item 5 -->
-        <div class="absolute top-16 right-10">
-            <span class="discovery-symbol text-blush-600 text-sm font-medium" onclick="showSecret('Im leaving next year but I\'ll always come back for you son 🥺💕')">✧</span>
-        </div>
-
-        <div class="max-w-4xl mx-auto text-center">
-            
-            <div class="reveal mb-12">
-                <h2 class="text-3xl md:text-5xl font-serif text-slate-900 mb-3">50 Reasons I Like You</h2>
-                <p class="text-slate-500 font-light text-xs md:text-sm">Fifty thoughts that make you unforgettable</p>
-            </div>
-
-            <!-- Interactive 50 Reasons Display Container -->
-            <div class="glass-card rounded-3xl p-8 md:p-14 shadow-xl max-w-2xl mx-auto relative reveal min-h-[280px] flex flex-col justify-between items-center border border-white/80">
-                
-                <!-- Reason Number Indicator -->
-                <div class="flex items-center gap-2">
-                    <span id="reasonNumber" class="text-[10px] font-bold uppercase tracking-widest text-blush-600 px-3 py-1 rounded-full bg-blush-100/70 border border-blush-200/50">
-                        Reason #1
-                    </span>
-                    <span id="sparkleIndicator" class="text-slate-400 text-xs">✦</span>
-                </div>
-
-                <!-- Active Reason Text -->
-                <div class="my-6 w-full">
-                    <p id="reasonText" class="text-lg md:text-2xl font-serif text-slate-800 transition-all duration-400 min-h-[80px] flex items-center justify-center font-normal px-4">
-                        1. Your smile.
-                    </p>
-                </div>
-
-                <!-- Navigation Controls -->
-                <div class="flex items-center justify-between w-full pt-6 border-t border-blush-100 text-xs text-slate-600">
-                    <button onclick="prevReason()" class="px-4 py-2 rounded-full bg-white/90 hover:bg-white text-slate-700 shadow-sm transition border border-blush-100">
-                        ← Previous
-                    </button>
-                    <button onclick="toggleAutoPlay()" id="autoPlayBtn" class="px-4 py-2 rounded-full bg-blush-100/80 hover:bg-blush-200/80 text-blush-700 font-medium transition">
-                        <span>Pause Auto</span> ⏸
-                    </button>
-                    <button onclick="nextReason()" class="px-4 py-2 rounded-full bg-white/90 hover:bg-white text-slate-700 shadow-sm transition border border-blush-100">
-                        Next →
+                <div class="pt-6">
+                    <button onclick="smoothScrollTo('section2', true)" class="glow-btn px-9 py-4 rounded-full bg-slate-900 text-white font-light text-base tracking-wide shadow-xl hover:bg-blush-600 hover:scale-105 active:scale-95 transition-all duration-500 flex items-center justify-center gap-3 mx-auto group">
+                        <span>Fine... I'll read it.</span>
+                        <span class="text-xs group-hover:translate-y-0.5 transition-transform">↓</span>
                     </button>
                 </div>
             </div>
 
-            <!-- Grid view toggle -->
-            <div class="mt-8">
-                <button onclick="toggleAllReasonsGrid()" class="text-xs font-medium text-slate-500 hover:text-blush-600 transition tracking-wide">
-                    View full list of 50 reasons ↓
-                </button>
-            </div>
-
-            <div id="allReasonsGrid" class="hidden mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 text-left max-h-96 overflow-y-auto p-6 glass-card rounded-2xl text-xs text-slate-700">
-                <!-- JS Populated -->
-            </div>
-
-        </div>
-    </section>
-
-    <!-- SECTION: OUR GALLERY SO FAR -->
-    <section id="gallerySection" class="py-28 px-4 relative">
-        
-        <!-- Hidden Discovery Item 6 -->
-        <div class="absolute top-10 left-16">
-            <span class="discovery-symbol text-blush-600 text-sm font-medium" onclick="showSecret('We gonna have some insane lore for our kids 🤣')">✦</span>
-        </div>
-
-        <div class="max-w-5xl mx-auto">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl md:text-5xl font-serif text-slate-900 mb-2">Our Gallery So Far</h2>
-                <p class="text-slate-500 font-light text-xs md:text-sm tracking-wide">we could always add to this btw</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-                
-                <!-- Gallery Card 1: our og -->
-                <div onclick="openGalleryModal('our og', 'that day was so memorable fr, ion even remeber what we were yapping about the whole time but its a core memory for me', 'galleryImg1')" class="glass-card p-5 rounded-3xl glass-card-hover shimmer-card cursor-pointer group flex flex-col justify-between">
-                    <div>
-                        <div class="w-full h-56 rounded-2xl bg-gradient-to-br from-blush-100/60 to-blush-200/40 border border-blush-200/60 overflow-hidden flex flex-col items-center justify-center relative mb-5 text-blush-400 group-hover:scale-[1.02] transition-transform duration-500">
-                            <img id="galleryImg1" src="Screenshot_20260928_012742_Gallery.jpg" alt="our og" class="w-full h-full object-cover" onerror="this.classList.add('hidden')">
-                        </div>
-                        
-                        <h3 class="font-serif text-xl font-semibold text-slate-900 mb-2">our og</h3>
-                        <p class="text-slate-600 text-xs md:text-sm font-light leading-relaxed">
-                            that day was so memorable fr, <span class="highlight-pink">ion even remeber what we were yapping about the whole time but its a core memory for me</span>
-                        </p>
-                    </div>
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 opacity-30 animate-pulse">
+                <div class="w-4 h-7 border border-slate-400 rounded-full flex justify-center p-1">
+                    <div class="w-1 h-1.5 bg-slate-600 rounded-full"></div>
                 </div>
-
-                <!-- Gallery Card 2: Our latest one -->
-                <div onclick="openGalleryModal('Our latest one', 'beeing with you after an exam was peak English even if it was short💔', 'galleryImg2')" class="glass-card p-5 rounded-3xl glass-card-hover shimmer-card cursor-pointer group flex flex-col justify-between">
-                    <div>
-                        <div class="w-full h-56 rounded-2xl bg-gradient-to-br from-blush-100/60 to-blush-200/40 border border-blush-200/60 overflow-hidden flex flex-col items-center justify-center relative mb-5 text-blush-400 group-hover:scale-[1.02] transition-transform duration-500">
-                            <img id="galleryImg2" src="Screenshot_20260928_012848_Gallery.jpg" alt="Our latest one" class="w-full h-full object-cover" onerror="this.classList.add('hidden')">
-                        </div>
-
-                        <h3 class="font-serif text-xl font-semibold text-slate-900 mb-2">Our latest one</h3>
-                        <p class="text-slate-600 text-xs md:text-sm font-light leading-relaxed">
-                            <span class="highlight-pink">beeing with you after an exam was peak English even if it was short💔</span>
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Gallery Card 3: our 1st one -->
-                <div onclick="openGalleryModal('our 1st one', 'Who knew how far we\'d come together', 'galleryImg3')" class="glass-card p-5 rounded-3xl glass-card-hover shimmer-card cursor-pointer group flex flex-col justify-between">
-                    <div>
-                        <div class="w-full h-56 rounded-2xl bg-gradient-to-br from-blush-100/60 to-blush-200/40 border border-blush-200/60 overflow-hidden flex flex-col items-center justify-center relative mb-5 text-blush-400 group-hover:scale-[1.02] transition-transform duration-500">
-                            <img id="galleryImg3" src="Screenshot_20260928_012908_Gallery.jpg" alt="our 1st one" class="w-full h-full object-cover" onerror="this.classList.add('hidden')">
-                        </div>
-
-                        <h3 class="font-serif text-xl font-semibold text-slate-900 mb-2">our 1st one</h3>
-                        <p class="text-slate-600 text-xs md:text-sm font-light leading-relaxed">
-                            <span class="highlight-pink">Who knew how far we'd come together</span>
-                        </p>
-                    </div>
-                </div>
-
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- SECTION 8: BEFORE YOU READ THE LAST PART -->
-    <section id="section8" class="py-32 px-4 text-center relative">
-        
-        <!-- Hidden Discovery Item 7 -->
-        <div class="absolute top-14 right-14">
-            <span class="discovery-symbol text-blush-600 text-sm font-medium" onclick="showSecret('you\'re my reason why')">✧</span>
-        </div>
-
-        <div class="max-w-xl mx-auto reveal space-y-8">
-            <h2 class="text-2xl md:text-4xl font-serif text-slate-900 leading-tight">Before You Read The Last Part...</h2>
-            <p class="text-slate-600 text-sm font-light">Take a quiet moment.</p>
+        <!-- SECTION 2: TYPEWRITER LETTER -->
+        <section id="section2" class="py-28 px-4 min-h-screen flex flex-col justify-center relative">
             
-            <div class="pt-4">
-                <button onclick="triggerFinalReveal()" class="glow-btn px-10 py-5 rounded-full bg-slate-900 text-white font-light text-base tracking-widest uppercase shadow-2xl hover:bg-blush-600 hover:scale-105 transition-all duration-500">
-                    One Last Thing...
-                </button>
+            <!-- Hidden Discovery Item 2 -->
+            <div class="absolute top-16 left-10">
+                <span class="discovery-symbol text-blush-600 text-sm font-medium" onclick="showSecret('ts took me like 2 months to build btw')">✧</span>
             </div>
-        </div>
-    </section>
 
-    <!-- FINAL CONFESSION & DECISION SECTION -->
-    <section id="finalSection" class="hidden py-28 px-4 min-h-screen flex flex-col items-center justify-center relative">
-        <div class="max-w-3xl mx-auto w-full">
-            <div class="glass-card rounded-3xl p-8 md:p-16 shadow-2xl border border-white/90 relative overflow-hidden">
-                
-                <h2 class="text-3xl md:text-5xl font-serif text-slate-900 mb-10 text-center">Final Confession</h2>
+            <div class="max-w-2xl mx-auto w-full">
+                <div class="glass-card rounded-3xl p-8 md:p-14 relative shadow-2xl border border-white/80">
+                    <div class="text-[11px] uppercase tracking-widest text-blush-600 font-semibold mb-8 flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-blush-500"></span>
+                        Dear Son,
+                    </div>
 
-                <div id="finalLetterText" class="space-y-6 text-slate-700 font-light text-base md:text-lg leading-relaxed whitespace-pre-line"></div>
+                    <div id="typewriterContainer" class="font-sans text-base md:text-lg leading-relaxed text-slate-700 min-h-[320px] whitespace-pre-line font-light"></div>
 
-                <!-- Final Climax Block -->
-                <div id="questionBlock" class="hidden mt-14 pt-12 border-t border-blush-200/60 text-center space-y-10 transition-all duration-1000">
+                    <div id="typewriterComplete" class="hidden mt-10 pt-8 border-t border-blush-200/50 flex flex-col items-center gap-3 text-center transition-opacity duration-700">
+                        <p class="text-xs font-medium tracking-widest uppercase text-blush-600">Keep scrolling</p>
+                        <span class="text-slate-400 text-xs">↓</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: OUR STORY TIMELINE -->
+        <section id="section3" class="py-28 px-4 relative">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-20 reveal">
+                    <h2 class="text-3xl md:text-5xl font-serif text-slate-900 mb-3">Our Story</h2>
+                    <p class="text-xs tracking-widest uppercase text-slate-400 font-light">Seven years of moments • Tap items to unfold ✨💕</p>
+                </div>
+
+                <!-- Vertical Timeline -->
+                <div class="relative timeline-line space-y-12 md:space-y-16">
                     
-                    <h3 class="text-3xl sm:text-5xl md:text-6xl font-serif font-normal text-slate-900 tracking-tight leading-tight">
-                        3rd time's a charm??
-                    </h3>
+                    <!-- Event 1 -->
+                    <div class="relative flex flex-col md:flex-row items-center reveal">
+                        <div class="flex items-center justify-center w-8 h-8 rounded-full bg-white border border-blush-300 text-blush-600 shadow-sm z-10 mb-4 md:mb-0 md:absolute md:left-1/2 md:-translate-x-1/2 text-xs">
+                            📍
+                        </div>
+                        <div class="w-full md:w-1/2 md:pr-12 md:text-right">
+                            <div onclick="toggleTimelineDetail(1)" class="glass-card p-6 rounded-2xl glass-card-hover shimmer-card cursor-pointer group">
+                                <span class="text-[10px] font-bold uppercase tracking-widest text-blush-500">Grade 3 • AOG</span>
+                                <h3 class="text-xl font-serif text-slate-800 font-semibold my-1">We met.</h3>
+                                <p class="text-slate-600 text-sm leading-relaxed font-light">
+                                    You probably had absolutely no idea that one awkward boy had already noticed you.
+                                </p>
+                                <div id="timelineDetail1" class="hidden mt-3 pt-3 border-t border-blush-100 text-xs text-blush-700 italic font-light">
+                                    Funny how life works. Some people catch your attention before you even understand why.
+                                </div>
+                                <div class="text-[10px] text-slate-400 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    🔍 Tap to reveal reflection
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-                        <button onclick="handleResponse('yes')" class="w-full sm:w-auto px-8 py-4 rounded-full bg-slate-900 text-white font-light text-sm md:text-base tracking-wide shadow-lg hover:bg-blush-600 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2">
-                            <span>💗</span>
-                            <span>Yes, let's try again.</span>
+                    <!-- Event 2 -->
+                    <div class="relative flex flex-col md:flex-row items-center reveal">
+                        <div class="flex items-center justify-center w-8 h-8 rounded-full bg-white border border-blush-300 text-blush-600 shadow-sm z-10 mb-4 md:mb-0 md:absolute md:left-1/2 md:-translate-x-1/2 text-xs">
+                            📍
+                        </div>
+                        <div class="w-full md:w-1/2 md:pl-12 md:ml-auto">
+                            <div onclick="toggleTimelineDetail(2)" class="glass-card p-6 rounded-2xl glass-card-hover shimmer-card cursor-pointer group">
+                                <span class="text-[10px] font-bold uppercase tracking-widest text-blush-500">A Quiet Beginning</span>
+                                <h3 class="text-xl font-serif text-slate-800 font-semibold my-1">Grade 7.</h3>
+                                <p class="text-slate-600 text-sm leading-relaxed font-light">
+                                    We somehow ended up together. I still smile when I think about it.
+                                </p>
+                                <div id="timelineDetail2" class="hidden mt-3 pt-3 border-t border-blush-100 text-xs text-blush-700 italic font-light">
+                                    Two kids who barely understood love, but js knew they enjoyed being around each other.
+                                </div>
+                                <div class="text-[10px] text-slate-400 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    🔍 Tap to reveal reflection
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event 3 -->
+                    <div class="relative flex flex-col md:flex-row items-center reveal">
+                        <div class="flex items-center justify-center w-8 h-8 rounded-full bg-white border border-blush-300 text-blush-600 shadow-sm z-10 mb-4 md:mb-0 md:absolute md:left-1/2 md:-translate-x-1/2 text-xs">
+                            📍
+                        </div>
+                        <div class="w-full md:w-1/2 md:pr-12 md:text-right">
+                            <div onclick="toggleTimelineDetail(3)" class="glass-card p-6 rounded-2xl glass-card-hover shimmer-card cursor-pointer group">
+                                <span class="text-[10px] font-bold uppercase tracking-widest text-blush-500">Unforgettable</span>
+                                <h3 class="text-xl font-serif text-slate-800 font-semibold my-1">Valentine's Dance.</h3>
+                                <p class="text-slate-600 text-sm leading-relaxed font-light">
+                                    That hug. I don't think I've ever forgotten it. It sounds dramatic... but it genuinely felt different.
+                                </p>
+                                <div id="timelineDetail3" class="hidden mt-3 pt-3 border-t border-blush-100 text-xs text-blush-700 italic font-light">
+                                    Like time slowed down for js a moment in the middle of a noisy room.
+                                </div>
+                                <div class="text-[10px] text-slate-400 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    🔍 Tap to reveal reflection
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event 4 -->
+                    <div class="relative flex flex-col md:flex-row items-center reveal">
+                        <div class="flex items-center justify-center w-8 h-8 rounded-full bg-white border border-roseacc text-roseacc shadow-sm z-10 mb-4 md:mb-0 md:absolute md:left-1/2 md:-translate-x-1/2 text-xs">
+                            📍
+                        </div>
+                        <div class="w-full md:w-1/2 md:pl-12 md:ml-auto">
+                            <div onclick="toggleTimelineDetail(4)" class="glass-card p-6 rounded-2xl glass-card-hover shimmer-card cursor-pointer group">
+                                <span class="text-[10px] font-bold uppercase tracking-widest text-roseacc">Growing Apart</span>
+                                <h3 class="text-xl font-serif text-slate-800 font-semibold my-1">November 30.</h3>
+                                <p class="text-slate-600 text-sm leading-relaxed font-light">
+                                    Our relationship ended. Not because you weren't enough. Because I still had growing up to do.
+                                </p>
+                                <div id="timelineDetail4" class="hidden mt-3 pt-3 border-t border-blush-100 text-xs text-blush-700 italic font-light">
+                                    Sometimes you have to step away from something special to learn how to properly care for it.
+                                </div>
+                                <div class="text-[10px] text-slate-400 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    🔍 Tap to reveal reflection
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event 5 -->
+                    <div class="relative flex flex-col md:flex-row items-center reveal">
+                        <div class="flex items-center justify-center w-8 h-8 rounded-full bg-slate-900 text-white shadow-md z-10 mb-4 md:mb-0 md:absolute md:left-1/2 md:-translate-x-1/2 text-xs">
+                            📍
+                        </div>
+                        <div class="w-full md:w-1/2 md:pr-12 md:text-right">
+                            <div onclick="toggleTimelineDetail(5)" class="glass-card p-6 rounded-2xl border border-blush-300 glass-card-hover shimmer-card cursor-pointer group">
+                                <span class="text-[10px] font-bold uppercase tracking-widest text-blush-600">Present Day</span>
+                                <h3 class="text-xl font-serif text-slate-800 font-semibold my-1">Today.</h3>
+                                <p class="text-slate-600 text-sm leading-relaxed font-light">
+                                    Seven years later. I'm not here pretending I've become perfect. I'm here because I've grown.
+                                </p>
+                                <div id="timelineDetail5" class="hidden mt-3 pt-3 border-t border-blush-100 text-xs text-blush-700 italic font-light">
+                                    And because after all this time, some feelings never really left 🥺💕
+                                </div>
+                                <div class="text-[10px] text-slate-400 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    🔍 Tap to reveal reflection
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: THINGS I'LL ALWAYS REMEMBER -->
+        <section id="section4" class="py-28 px-4 bg-gradient-to-b from-transparent via-blush-100/30 to-transparent relative">
+            
+            <!-- Hidden Discovery Item 3 -->
+            <div class="absolute top-12 right-12">
+                <span class="discovery-symbol text-blush-600 text-sm font-medium" onclick="showSecret('we keeping it lowk this time right?')">◦</span>
+            </div>
+
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-3xl md:text-5xl font-serif text-slate-900 mb-3">Things I'll Always Remember About You</h2>
+                    <p class="text-slate-500 font-light text-xs md:text-sm">Little details preserved through time</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+                    <div class="glass-card p-6 rounded-2xl reveal glass-card-hover shimmer-card">
+                        <span class="font-light text-slate-800 text-sm md:text-base">Your glasses.</span>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl reveal glass-card-hover shimmer-card" style="transition-delay: 80ms;">
+                        <span class="font-light text-slate-800 text-sm md:text-base">Your eyes.</span>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl reveal glass-card-hover shimmer-card" style="transition-delay: 120ms;">
+                        <span class="font-light text-slate-800 text-sm md:text-base">Your hair.</span>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl reveal glass-card-hover shimmer-card" style="transition-delay: 160ms;">
+                        <span class="font-light text-slate-800 text-sm md:text-base">How ridiculously smart you are.</span>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl reveal glass-card-hover shimmer-card" style="transition-delay: 200ms;">
+                        <span class="font-light text-slate-800 text-sm md:text-base">How mature you've always been.</span>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl reveal glass-card-hover shimmer-card" style="transition-delay: 240ms;">
+                        <span class="font-light text-slate-800 text-sm md:text-base">Pink somehow becoming your entire personality.</span>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl reveal glass-card-hover shimmer-card" style="transition-delay: 280ms;">
+                        <span class="font-light text-slate-800 text-sm md:text-base">Coke always being your favourite.</span>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl reveal glass-card-hover shimmer-card" style="transition-delay: 320ms;">
+                        <span class="font-light text-slate-800 text-sm md:text-base">The way you'd randomly tickle my ribs <span class="text-xs text-blush-700 italic block mt-1">(gone are those days, but its still core memories for me)</span></span>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl reveal glass-card-hover shimmer-card" style="transition-delay: 360ms;">
+                        <span class="font-light text-slate-800 text-sm md:text-base">The Valentine's hug.</span>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl reveal glass-card-hover shimmer-card sm:col-span-2 lg:col-span-3" style="transition-delay: 400ms;">
+                        <span class="font-light text-slate-800 text-sm md:text-base">The way you made ordinary moments feel important.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: WHAT I LEARNED -->
+        <section id="section5" class="py-28 px-4 relative">
+            
+            <!-- Hidden Discovery Item 4 -->
+            <div class="absolute bottom-10 left-12">
+                <span class="discovery-symbol text-blush-600 text-sm font-medium" onclick="showSecret('I miss hugging you lowk')">✦</span>
+            </div>
+
+            <div class="max-w-3xl mx-auto reveal">
+                <div class="glass-card rounded-3xl p-8 md:p-14 relative shadow-2xl border border-white/90 overflow-hidden">
+                    <div class="absolute -right-12 -bottom-12 w-56 h-56 bg-blush-200/30 rounded-full blur-3xl pointer-events-none"></div>
+                    
+                    <h2 class="text-3xl md:text-4xl font-serif text-slate-900 mb-8 text-center">What I Learned</h2>
+                    
+                    <div class="space-y-6 text-slate-700 font-light text-base md:text-lg leading-relaxed text-center">
+                        <p>I spent a long time thinking about us.</p>
+                        <p class="font-normal text-slate-800">
+                            I realised that love isn't js about liking someone.<br>
+                            It's listening. Understanding. Communicating. Being present.
+                        </p>
+                        <p>
+                            Back then I was shy <span class="text-slate-500 text-sm">(though I'm still a bit shy but I'm working on it 🥺🙏)</span>. Sometimes I took little things too personally.<br>
+                            Sometimes I stayed quiet instead of talking.
+                        </p>
+                        <p class="italic text-blush-600 font-serif">
+                            Looking back, I understand why that wasn't fair.
+                        </p>
+                        <p>
+                            If I could go back, I wouldn't change meeting you.<br>
+                            I'd change the way I handled those moments.
+                        </p>
+                        <div class="pt-6 font-normal text-slate-900 text-base md:text-xl border-t border-blush-100">
+                            I can't change the past.<br>
+                            <span class="text-blush-600 font-serif font-semibold">But I can promise I've learned from it.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: 50 REASONS I LIKE YOU -->
+        <section id="section6" class="py-28 px-4 bg-gradient-to-b from-transparent via-blush-50/50 to-transparent relative">
+            
+            <!-- Hidden Discovery Item 5 -->
+            <div class="absolute top-16 right-10">
+                <span class="discovery-symbol text-blush-600 text-sm font-medium" onclick="showSecret('Im leaving next year but I\'ll always come back for you son 🥺💕')">✧</span>
+            </div>
+
+            <div class="max-w-4xl mx-auto text-center">
+                
+                <div class="reveal mb-12">
+                    <h2 class="text-3xl md:text-5xl font-serif text-slate-900 mb-3">50 Reasons I Like You</h2>
+                    <p class="text-slate-500 font-light text-xs md:text-sm">Fifty thoughts that make you unforgettable</p>
+                </div>
+
+                <!-- Interactive 50 Reasons Display Container -->
+                <div class="glass-card rounded-3xl p-8 md:p-14 shadow-xl max-w-2xl mx-auto relative reveal min-h-[280px] flex flex-col justify-between items-center border border-white/80">
+                    
+                    <!-- Reason Number Indicator -->
+                    <div class="flex items-center gap-2">
+                        <span id="reasonNumber" class="text-[10px] font-bold uppercase tracking-widest text-blush-600 px-3 py-1 rounded-full bg-blush-100/70 border border-blush-200/50">
+                            Reason #1
+                        </span>
+                        <span id="sparkleIndicator" class="text-slate-400 text-xs">✦</span>
+                    </div>
+
+                    <!-- Active Reason Text -->
+                    <div class="my-6 w-full">
+                        <p id="reasonText" class="text-lg md:text-2xl font-serif text-slate-800 transition-all duration-400 min-h-[80px] flex items-center justify-center font-normal px-4">
+                            1. Your smile.
+                        </p>
+                    </div>
+
+                    <!-- Navigation Controls -->
+                    <div class="flex items-center justify-between w-full pt-6 border-t border-blush-100 text-xs text-slate-600">
+                        <button onclick="prevReason()" class="px-4 py-2 rounded-full bg-white/90 hover:bg-white text-slate-700 shadow-sm transition border border-blush-100">
+                            ← Previous
                         </button>
-                        
-                        <button onclick="show404Error()" class="w-full sm:w-auto px-8 py-4 rounded-full bg-white/90 border border-slate-200 text-slate-700 font-light text-sm md:text-base tracking-wide hover:bg-white hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2">
-                            <span>🤍</span>
-                            <span>I need a little more time.</span>
+                        <button onclick="toggleAutoPlay()" id="autoPlayBtn" class="px-4 py-2 rounded-full bg-blush-100/80 hover:bg-blush-200/80 text-blush-700 font-medium transition">
+                            <span>Pause Auto</span> ⏸
+                        </button>
+                        <button onclick="nextReason()" class="px-4 py-2 rounded-full bg-white/90 hover:bg-white text-slate-700 shadow-sm transition border border-blush-100">
+                            Next →
                         </button>
                     </div>
                 </div>
 
-                <!-- Response Result Output -->
-                <div id="responseResult" class="hidden mt-12 p-8 rounded-2xl bg-white/95 border border-blush-200 text-center text-slate-800 leading-relaxed font-light text-base md:text-lg"></div>
+                <!-- Grid view toggle -->
+                <div class="mt-8">
+                    <button onclick="toggleAllReasonsGrid()" class="text-xs font-medium text-slate-500 hover:text-blush-600 transition tracking-wide">
+                        View full list of 50 reasons ↓
+                    </button>
+                </div>
+
+                <div id="allReasonsGrid" class="hidden mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 text-left max-h-96 overflow-y-auto p-6 glass-card rounded-2xl text-xs text-slate-700">
+                    <!-- JS Populated -->
+                </div>
 
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- ENDING SECTION WITH SPEECH BUBBLE NOTE -->
-    <section id="endingSection" class="hidden py-36 px-4 text-center min-h-screen flex flex-col items-center justify-center bg-white transition-opacity duration-1000">
-        <div class="max-w-2xl mx-auto space-y-8">
-            <p class="text-xl md:text-3xl font-serif text-slate-800 leading-relaxed tracking-wide font-normal">
-                «Sometimes the right people js need a little more time to find each other again.»
-            </p>
-
-            <!-- Little Speech Bubble Note -->
-            <div class="speech-bubble relative max-w-md mx-auto my-6 p-4 rounded-2xl bg-blush-100/95 text-slate-700 border border-blush-200/80 shadow-sm text-xs sm:text-sm font-sans italic text-center leading-relaxed">
-                "time i wanted to send this to you yesterday mara you asked me that weird question out the pi"
+        <!-- SECTION: OUR GALLERY SO FAR -->
+        <section id="gallerySection" class="py-28 px-4 relative">
+            
+            <!-- Hidden Discovery Item 6 -->
+            <div class="absolute top-10 left-16">
+                <span class="discovery-symbol text-blush-600 text-sm font-medium" onclick="showSecret('We gonna have some insane lore for our kids 🤣')">✦</span>
             </div>
 
-            <div class="text-xl text-blush-500">♡</div>
-        </div>
-    </section>
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-3xl md:text-5xl font-serif text-slate-900 mb-2">Our Gallery So Far</h2>
+                    <p class="text-slate-500 font-light text-xs md:text-sm tracking-wide">we could always add to this btw</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                    
+                    <!-- Gallery Card 1: our og -->
+                    <div onclick="openGalleryModal('our og', 'that day was so memorable fr, ion even remeber what we were yapping about the whole time but its a core memory for me', 'galleryImg1')" class="glass-card p-5 rounded-3xl glass-card-hover shimmer-card cursor-pointer group flex flex-col justify-between">
+                        <div>
+                            <div class="w-full h-56 rounded-2xl bg-gradient-to-br from-blush-100/60 to-blush-200/40 border border-blush-200/60 overflow-hidden flex flex-col items-center justify-center relative mb-5 text-blush-400 group-hover:scale-[1.02] transition-transform duration-500">
+                                <img id="galleryImg1" src="Screenshot_20260928_012742_Gallery.jpg" alt="our og" class="w-full h-full object-cover" onerror="this.classList.add('hidden')">
+                            </div>
+                            
+                            <h3 class="font-serif text-xl font-semibold text-slate-900 mb-2">our og</h3>
+                            <p class="text-slate-600 text-xs md:text-sm font-light leading-relaxed">
+                                that day was so memorable fr, <span class="highlight-pink">ion even remeber what we were yapping about the whole time but its a core memory for me</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Card 2: Our latest one -->
+                    <div onclick="openGalleryModal('Our latest one', 'being w you after an exam was so peak', 'galleryImg2')" class="glass-card p-5 rounded-3xl glass-card-hover shimmer-card cursor-pointer group flex flex-col justify-between">
+                        <div>
+                            <div class="w-full h-56 rounded-2xl bg-gradient-to-br from-blush-100/60 to-blush-200/40 border border-blush-200/60 overflow-hidden flex flex-col items-center justify-center relative mb-5 text-blush-400 group-hover:scale-[1.02] transition-transform duration-500">
+                                <img id="galleryImg2" src="Screenshot_20260928_012848_Gallery.jpg" alt="Our latest one" class="w-full h-full object-cover" onerror="this.classList.add('hidden')">
+                            </div>
+
+                            <h3 class="font-serif text-xl font-semibold text-slate-900 mb-2">Our latest one</h3>
+                            <p class="text-slate-600 text-xs md:text-sm font-light leading-relaxed">
+                                <span class="highlight-pink">being w you after an exam was so peak</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Card 3: our 1st one -->
+                    <div onclick="openGalleryModal('our 1st one', 'Who knew how far we\'d come together', 'galleryImg3')" class="glass-card p-5 rounded-3xl glass-card-hover shimmer-card cursor-pointer group flex flex-col justify-between">
+                        <div>
+                            <div class="w-full h-56 rounded-2xl bg-gradient-to-br from-blush-100/60 to-blush-200/40 border border-blush-200/60 overflow-hidden flex flex-col items-center justify-center relative mb-5 text-blush-400 group-hover:scale-[1.02] transition-transform duration-500">
+                                <img id="galleryImg3" src="Screenshot_20260928_012908_Gallery.jpg" alt="our 1st one" class="w-full h-full object-cover" onerror="this.classList.add('hidden')">
+                            </div>
+
+                            <h3 class="font-serif text-xl font-semibold text-slate-900 mb-2">our 1st one</h3>
+                            <p class="text-slate-600 text-xs md:text-sm font-light leading-relaxed">
+                                <span class="highlight-pink">Who knew how far we'd come together</span>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 8: BEFORE YOU READ THE LAST PART -->
+        <section id="section8" class="py-32 px-4 text-center relative">
+            
+            <!-- Hidden Discovery Item 7 -->
+            <div class="absolute top-14 right-14">
+                <span class="discovery-symbol text-blush-600 text-sm font-medium" onclick="showSecret('you\'re my reason why')">✧</span>
+            </div>
+
+            <div class="max-w-xl mx-auto reveal space-y-8">
+                <h2 class="text-2xl md:text-4xl font-serif text-slate-900 leading-tight">Before You Read The Last Part...</h2>
+                <p class="text-slate-600 text-sm font-light">Take a quiet moment.</p>
+                
+                <div class="pt-4">
+                    <button onclick="triggerFinalReveal()" class="glow-btn px-10 py-5 rounded-full bg-slate-900 text-white font-light text-base tracking-widest uppercase shadow-2xl hover:bg-blush-600 hover:scale-105 transition-all duration-500">
+                        One Last Thing...
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- FINAL CONFESSION & DECISION SECTION -->
+        <section id="finalSection" class="hidden py-28 px-4 min-h-screen flex flex-col items-center justify-center relative">
+            <div class="max-w-3xl mx-auto w-full">
+                <div class="glass-card rounded-3xl p-8 md:p-16 shadow-2xl border border-white/90 relative overflow-hidden">
+                    
+                    <h2 class="text-3xl md:text-5xl font-serif text-slate-900 mb-10 text-center">Final Confession</h2>
+
+                    <div id="finalLetterText" class="space-y-6 text-slate-700 font-light text-base md:text-lg leading-relaxed whitespace-pre-line"></div>
+
+                    <!-- Final Climax Block -->
+                    <div id="questionBlock" class="hidden mt-14 pt-12 border-t border-blush-200/60 text-center space-y-10 transition-all duration-1000">
+                        
+                        <h3 class="text-3xl sm:text-5xl md:text-6xl font-serif font-normal text-slate-900 tracking-tight leading-tight">
+                            3rd time's a charm??
+                        </h3>
+
+                        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                            <button onclick="handleResponse('yes')" class="w-full sm:w-auto px-8 py-4 rounded-full bg-slate-900 text-white font-light text-sm md:text-base tracking-wide shadow-lg hover:bg-blush-600 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2">
+                                <span>💗</span>
+                                <span>Yes, let's try again.</span>
+                            </button>
+                            
+                            <button onclick="show404Error()" class="w-full sm:w-auto px-8 py-4 rounded-full bg-white/90 border border-slate-200 text-slate-700 font-light text-sm md:text-base tracking-wide hover:bg-white hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center gap-2">
+                                <span>🤍</span>
+                                <span>I need a little more time.</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Response Result Output -->
+                    <div id="responseResult" class="hidden mt-12 p-8 rounded-2xl bg-white/95 border border-blush-200 text-center text-slate-800 leading-relaxed font-light text-base md:text-lg"></div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ENDING SECTION WITH SPEECH BUBBLE NOTE -->
+        <section id="endingSection" class="hidden py-36 px-4 text-center min-h-screen flex flex-col items-center justify-center bg-white transition-opacity duration-1000">
+            <div class="max-w-2xl mx-auto space-y-8">
+                <p class="text-xl md:text-3xl font-serif text-slate-800 leading-relaxed tracking-wide font-normal">
+                    «Sometimes the right people js need a little more time to find each other again.»
+                </p>
+
+                <!-- Little Speech Bubble Note -->
+                <div class="speech-bubble relative max-w-md mx-auto my-6 p-4 rounded-2xl bg-blush-100/95 text-slate-700 border border-blush-200/80 shadow-sm text-xs sm:text-sm font-sans italic text-center leading-relaxed">
+                    "time i wanted to send this to you yesterday mara you asked me that weird question out the pi"
+                </div>
+
+                <div class="text-xl text-blush-500">♡</div>
+            </div>
+        </section>
+    </main>
 
     <!-- JAVASCRIPT LOGIC -->
     <script>
@@ -754,6 +951,7 @@
         const canvas = document.getElementById('particleCanvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
+        let introParticleShift = 0;
 
         function resizeCanvas() {
             canvas.width = window.innerWidth;
@@ -791,6 +989,9 @@
                 this.x = Math.random() * canvas.width;
                 this.opacity = Math.random() * 0.5 + 0.1;
                 this.speedY = Math.random() * 0.4 + 0.1;
+                if (introParticleShift > 0.5 && Math.random() > 0.4) {
+                    this.type = Math.random() > 0.5 ? 'heart' : 'petal';
+                }
             }
 
             draw() {
@@ -855,6 +1056,73 @@
             }
         }
 
+        // FAKE INTRO EXPERIENTIAL LOGIC
+        function runDiagnosticTest() {
+            const toast = document.getElementById('introDiagnosticToast');
+            toast.classList.remove('hidden');
+            triggerHeartBurst(12);
+            introParticleShift = 0.5;
+        }
+
+        function analyzeMemoryCache() {
+            const feedback = document.getElementById('memoryCacheFeedback');
+            feedback.classList.remove('hidden');
+            triggerHeartBurst(18);
+            introParticleShift = 0.8;
+            setIntroTheme('blush');
+        }
+
+        function setIntroTheme(theme) {
+            const glow1 = document.getElementById('introBgGlow1');
+            const glow2 = document.getElementById('introBgGlow2');
+            const badge = document.getElementById('introLogoBadge');
+            const feedback = document.getElementById('themeFeedbackText');
+            const terminalCard = document.getElementById('introTerminalCard');
+
+            if (theme === 'blush') {
+                glow1.className = "absolute -top-32 -left-32 w-96 h-96 bg-pink-500/30 rounded-full blur-3xl pointer-events-none transition-all duration-1000";
+                glow2.className = "absolute top-1/2 -right-32 w-96 h-96 bg-rose-500/25 rounded-full blur-3xl pointer-events-none transition-all duration-1000";
+                badge.className = "w-8 h-8 rounded-lg bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center font-mono font-bold text-xs text-white transition-all duration-700 shadow-md shadow-pink-500/30";
+                feedback.innerHTML = "✦ Theme Updated: <span class='text-pink-400 font-semibold'>Blush Romance Spectrum</span>";
+                terminalCard.style.borderColor = "rgba(240, 98, 146, 0.8)";
+                terminalCard.style.boxShadow = "0 10px 40px -10px rgba(224, 61, 115, 0.4)";
+                triggerHeartBurst(20);
+                introParticleShift = 1.0;
+            } else if (theme === 'amber') {
+                glow1.className = "absolute -top-32 -left-32 w-96 h-96 bg-amber-500/20 rounded-full blur-3xl pointer-events-none transition-all duration-1000";
+                glow2.className = "absolute top-1/2 -right-32 w-96 h-96 bg-orange-500/15 rounded-full blur-3xl pointer-events-none transition-all duration-1000";
+                badge.className = "w-8 h-8 rounded-lg bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center font-mono font-bold text-xs text-slate-950 transition-all duration-700";
+                feedback.innerHTML = "✦ Theme Updated: <span class='text-amber-400 font-semibold'>Warm Ambient Spectrum</span>";
+            } else {
+                glow1.className = "absolute -top-32 -left-32 w-96 h-96 bg-[#800f22]/25 rounded-full blur-3xl pointer-events-none transition-all duration-1000";
+                glow2.className = "absolute top-1/2 -right-32 w-96 h-96 bg-[#420610]/40 rounded-full blur-3xl pointer-events-none transition-all duration-1000";
+                badge.className = "w-8 h-8 rounded-lg bg-gradient-to-br from-[#800f22] to-rose-900 flex items-center justify-center font-mono font-bold text-xs text-white transition-all duration-700 shadow-md shadow-[#800f22]/30";
+                feedback.innerHTML = "✦ Theme Updated: <span class='text-rose-300 font-semibold'>Dark Navy & Deep Maroon Spectrum</span>";
+            }
+        }
+
+        // TRANSITION FROM FAKE INTRO TO MAIN WEBSITE
+        function startMainWebsiteReveal() {
+            triggerHeartBurst(65);
+            const wrapper = document.getElementById('fakeIntroWrapper');
+            const body = document.getElementById('bodyElement');
+
+            // Unlock body scrolling
+            body.classList.remove('overflow-hidden');
+            
+            // Play smooth glass/fade transition
+            wrapper.style.filter = "blur(8px)";
+            wrapper.style.opacity = "0";
+            wrapper.style.transform = "scale(0.97)";
+
+            setTimeout(() => {
+                wrapper.style.display = "none";
+                const heroSection = document.getElementById('hero');
+                heroSection.scrollIntoView({ behavior: 'smooth' });
+                triggerHeartBurst(35);
+            }, 1000);
+        }
+
         // Scroll Progress & Reveal Animations
         window.addEventListener('scroll', () => {
             const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
@@ -888,7 +1156,7 @@
             "Something you could take your time with.",
             "Something that didn't rush you.",
             "Something that js told you the truth.",
-            "We've known each other for 7 years now 🥺💕.",
+            "We've known each other for 7 years now.",
             "Back when we first met, neither of us had any idea where life would take us.",
             "I js remember noticing you.",
             "There was something about you that stood out before I even knew your name.",
@@ -1111,7 +1379,7 @@
                 container.innerHTML = `
                     <div class="flex flex-col items-center justify-center text-blush-400 p-6 text-center">
                         <svg class="w-12 h-12 mb-2 opacity-60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                         </svg>
                         <span class="text-sm text-slate-600 font-light font-serif">${title}</span>
                     </div>
